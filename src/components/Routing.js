@@ -10,7 +10,7 @@ export default function Routing() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route path='/' element={<Home />}></Route>
+                    <Route path='/*' element={<Home />}></Route>
                     <Route path='/products' element={<Products />}></Route>
                     <Route path='/productdetails' element={<ProductDetails />}></Route>
                 </Routes>

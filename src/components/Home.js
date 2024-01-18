@@ -20,7 +20,7 @@ export default function Home() {
                         <div className="categories-heading">
                             <p>Shop By Categories</p>
                         </div>
-                        <div className="category-images">
+                        <div className="category-images"> 
                             <ul>
                                 <li>
                                     <Link to="/products">
@@ -47,7 +47,6 @@ export default function Home() {
                                     </Link>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
                 </div>

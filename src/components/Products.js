@@ -8,22 +8,21 @@ import { ShopByPrice } from '../filters/ShopByPrice'
 import { Loading } from './Loading'
 
 
-
-
 export const Products = () => {
 
     const [datas, setDatas] = useState([])
     const [toggle, setToggle] = useState(1)
     const [filter, setFilter] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [color, setColor] = useState(null)
 
+    console.log(datas);
     useEffect(() => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-            axios.get("https://fakestoreapi.com/products").then((response) => {
+            axios.get("http://localhost:2500/products").then((response) => {
                 setDatas(response.data)
-                console.log(datas);
             })
         }, 3000);
     }, [])
@@ -33,7 +32,11 @@ export const Products = () => {
     }
 
     function filterMen(value) {
-        setFilter(value)
+        setFilter((prevFilter) => (prevFilter === value ? null : value));
+    }
+
+    function filterByColor(colors) {
+        setColor((prevColor) => (prevColor === colors ? null : colors));
     }
     return (
 
@@ -87,7 +90,21 @@ export const Products = () => {
                                 </div>
                             </div>
                             <div className={toggle == 2 ? "active" : "filters shop-by-color"}>
-                                <ShopByColor />
+                                <div className='color'>
+                                    <div className='container'>
+                                        <div className='shop-color'>
+                                            <ul>
+                                                <li className={color == "black" ? "black active" : "black"} onClick={() => filterByColor("black")}><Link to="#" className=""></Link></li>
+                                                <li className={color == "white" ? "white active" : "white"} onClick={() => filterByColor("white")}><Link to="#"></Link></li>
+                                                <li className={color == "blue" ? "blue active" : "blue"} onClick={() => filterByColor("blue")}><Link to="#"></Link></li>
+                                                <li className={color == "purple" ? "purple active" : "purple"} onClick={() => filterByColor("purple")}><Link to="#"></Link></li>
+                                                <li className={color == "red" ? "red active" : "red"} onClick={() => filterByColor("red")}><Link to="#"></Link></li>
+                                                <li className={color == "mud" ? "mud active" : "mud"} onClick={() => filterByColor("mud")}><Link to="#"></Link></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className={toggle == 3 ? "active" : "filters shop-by-price"}>
                                 <ShopByPrice />
@@ -95,27 +112,28 @@ export const Products = () => {
                         </div>
                         <div className='products'>
                             {
-                                datas.map((item) => {
-                                    return (
-                                        (filter == item.category || filter == null) ? (
-                                            <>
-                                                <Link to="/productdetails">
-                                                    <div className='items'>
-                                                        <img src={item.image} />
-                                                        <div className='description'>
-                                                            <p>{item.title}</p>
+                                datas.length > 0 ? (
+                                    datas.map((item) => {
+                                        return (
+                                            (filter === item.category || filter === null) && (color === null || color === item.color) && (
+                                                <>
+                                                    <Link to="/productdetails">
+                                                        <div className='items'>
+                                                            <img src={item.image} />
+                                                            <div className='description'>
+                                                                <p>{item.title}</p>
+                                                            </div>
+                                                            <div className='price'>
+                                                                <p><b>Price : </b>${item.price}</p>
+                                                                <p><b>Ratings : {item.rating.rate}</b></p>
+                                                            </div>
                                                         </div>
-                                                        <div className='price'>
-                                                            <p><b>Price : </b>${item.price}</p>
-                                                            <p><b>Ratings : {item.rating.rate}</b></p>
-                                                        </div>
-
-                                                    </div>
-                                                </Link>
-                                            </>
-                                        ) : null
-                                    )
-                                })
+                                                    </Link>
+                                                </>
+                                            )
+                                        )
+                                    })
+                                ) : (<p className='no-data'>No Data Found</p>)
                             }
                         </div>
                     </>

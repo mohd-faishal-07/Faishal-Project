@@ -227,6 +227,7 @@ hr {
 
 .active {
   display: block;
+  
 }
 .titles a.activate {
   color: red;
@@ -258,14 +259,20 @@ hr {
   font-size: large;
 }
 
-.all-colors ul {
+.shop-color ul {
   display: flex;
   flex-wrap: wrap;
 }
 
-.all-colors ul li {
+.shop-color ul li {
   list-style: none;
   margin: 30px;
+}
+.shop-color ul li.active {
+  border: 2px solid darkblue;
+  margin: 18px;
+  padding: 10px 0px;
+  border-radius: 100%;
 }
 
 .slider-price input {
@@ -307,6 +314,11 @@ hr {
   padding: 10px 20px;
   background-color: #b89c81;
   border-radius: 100%;
+}
+
+.no-data{
+  display: block;
+  font-size: larger;
 }
 
 /* Footer page */

@@ -12,7 +12,7 @@ export default function Routing() {
                 <Routes>
                     <Route path='/*' element={<Home />}></Route>
                     <Route path='/products' element={<Products />}></Route>
-                    <Route path='/productdetails' element={<ProductDetails />}></Route>
+                    <Route path='/productdetails/:id' element={<ProductDetails />}></Route>
                 </Routes>
             </BrowserRouter>
         </>

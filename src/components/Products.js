@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
 import { Footer } from './Footer'
-import { ShopByCategory } from '../filters/ShopByCategory'
-import { ShopByColor } from '../filters/ShopByColor'
-import { ShopByPrice } from '../filters/ShopByPrice'
 import { Loading } from './Loading'
-
+import Slider from "react-slider"
 
 export const Products = () => {
+    const min = 0;
+    const max = 1000
 
     const [datas, setDatas] = useState([])
     const [toggle, setToggle] = useState(1)
     const [filter, setFilter] = useState(null)
     const [loading, setLoading] = useState(false)
     const [color, setColor] = useState(null)
+    const [value, setValue] = useState([min, max]);
+
 
     console.log(datas);
     useEffect(() => {
@@ -38,6 +39,10 @@ export const Products = () => {
     function filterByColor(colors) {
         setColor((prevColor) => (prevColor === colors ? null : colors));
     }
+
+    // function handleChange(event) {
+    //     setValue(event.target.value, 10);
+    // };
     return (
 
         < div className='products-page' >
@@ -107,34 +112,37 @@ export const Products = () => {
                                 </div>
                             </div>
                             <div className={toggle == 3 ? "active" : "filters shop-by-price"}>
-                                <ShopByPrice />
+                                <div className='prices'>
+                                    <div className='container'>
+                                        <div className='shop-price'>
+                                            <Slider className="slider" min={min} max={max} value={value} onChange={setValue} />
+                                            <p><b>Price :</b> ${value[0]} - ${value[1]}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className='products'>
-                            {
-                                datas.length > 0 ? (
-                                    datas.map((item) => {
-                                        return (
-                                            (filter === item.category || filter === null) && (color === null || color === item.color) && (
-                                                <>
-                                                    <Link to="/productdetails">
-                                                        <div className='items'>
-                                                            <img src={item.image} />
-                                                            <div className='description'>
-                                                                <p>{item.title}</p>
-                                                            </div>
-                                                            <div className='price'>
-                                                                <p><b>Price : </b>${item.price}</p>
-                                                                <p><b>Ratings : {item.rating.rate}</b></p>
-                                                            </div>
-                                                        </div>
-                                                    </Link>
-                                                </>
-                                            )
-                                        )
-                                    })
-                                ) : (<p className='no-data'>No Data Found</p>)
-                            }
+                            {datas.length > 0 ? (
+                                datas.map((item) => (
+                                    (filter === item.category || filter === null) && (color === null || color === item.color) && (item.price >= value[0] && item.price <= value[1]) && (
+                                        <Link to={`/productdetails/${item.id}`} key={item.id}>
+                                            <div className='items'>
+                                                <img src={item.image} />
+                                                <div className='description'>
+                                                    <p>{item.title}</p>
+                                                </div>
+                                                <div className='price'>
+                                                    <p><b>Price : </b>${item.price}</p>
+                                                    <p><b>Ratings : {item.rating.rate}</b></p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                ))
+                            ) : (
+                                <p className='no-data'>No Data Found</p>
+                            )}
                         </div>
                     </>
                 }

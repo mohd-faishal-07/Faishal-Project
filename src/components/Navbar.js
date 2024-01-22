@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import { IoBagOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { AiOutlineUser } from "react-icons/ai";
+import { useSelector } from "react-redux";
+
+
 export default function Navbar() {
+
+    const result = useSelector((state)=>state.cartData)
+    console.log("data",result);
     return (
         <div className="nav">
             <div className="container">
@@ -20,18 +26,17 @@ export default function Navbar() {
                         </div>
                         <div className="icons">
                             <ul>
-                                <li><Link to='#'><IoBagOutline /></Link></li>
                                 <li><Link to='#'><FaRegHeart/></Link></li>
                                 <li><Link to='#'><AiOutlineUser/></Link></li>
+                                <li className="first-list"><Link to='#'><IoBagOutline /></Link></li>
+                                <span className="cart-count">{result.length}</span>
 
                             </ul>
                         </div>
                     </div>
                     <ul>
-                        <img src="" />
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/products'>Products</Link></li>
-                        <li><Link to='/productdetails'>Product Details</Link></li>
                     </ul>
                 </div>
             </div>

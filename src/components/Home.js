@@ -24,25 +24,25 @@ export default function Home() {
                             <ul>
                                 <li>
                                     <Link to="/products">
-                                        <img src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" />
+                                        <img src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" alt="img"/>
                                         <p>Men</p>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/products">
-                                        <img src="https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg" />
+                                        <img src="https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg" alt="img"/>
                                         <p>Jewellery</p>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/products">
-                                        <img src="https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg" />
+                                        <img src="https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg" alt="img"/>
                                         <p>Electronics</p>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/products">
-                                        <img src="https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg" />
+                                        <img src="https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg" alt="img"/>
                                         <p>Women</p>
                                     </Link>
                                 </li>

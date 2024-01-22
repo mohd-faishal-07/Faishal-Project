@@ -102,6 +102,19 @@ hr {
   color: black;
 }
 
+.icon .first-list {
+  position: relative;
+}
+
+.icons .cart-count {
+  position: absolute;
+  top: 14px;
+  right: 95px;
+  padding: 2px 8px;
+  background-color: lightgray;
+  border-radius: 100%;
+}
+
 /* Home page */
 .home-img {
   background: url("./images/homebanner.jpg");
@@ -173,6 +186,7 @@ hr {
 .products-page .sc-beySPh.gZmPOF svg {
   margin: 0 auto;
 }
+
 .items img {
   width: 200px;
   height: 200px;
@@ -227,12 +241,14 @@ hr {
 
 .active {
   display: block;
-  
+
 }
+
 .titles a.activate {
   color: red;
 }
-.border{
+
+.border {
   border: 2px solid red;
 }
 
@@ -243,9 +259,10 @@ hr {
   justify-content: space-evenly;
 }
 
-.lines{
+.lines {
   font-size: larger;
 }
+
 .all-categories img {
   width: 120px;
   margin: 10px 30px;
@@ -268,6 +285,7 @@ hr {
   list-style: none;
   margin: 30px;
 }
+
 .shop-color ul li.active {
   border: 2px solid darkblue;
   margin: 18px;
@@ -279,11 +297,12 @@ hr {
   position: absolute;
   width: 400px;
   margin: 30px;
-  height: 1px;
+  height: 8px;
   background-color: gray;
 }
-.slider .thumb{
-  top: -10px;
+
+.slider .thumb {
+  top: -9px;
   width: 20px;
   height: 20px;
   border: 2px solid rgb(73, 73, 73);
@@ -327,9 +346,78 @@ hr {
   border-radius: 100%;
 }
 
-.no-data{
+.no-data {
   display: block;
   font-size: larger;
+}
+
+/* Details Page */
+
+.all-details {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 30px;
+  margin: 60px 0px;
+}
+
+.detail-img img {
+  width: 500px;
+  height: 500px;
+}
+
+.product-desc {
+  line-height: 2.5rem;
+  text-align: justify;
+}
+
+.product-desc a {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid grey;
+  background-color: rgb(190, 190, 190);
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.product-desc a:hover {
+  background-color: grey;
+  color: white;
+}
+
+p.title {
+  font-size: xx-large;
+}
+
+
+p.rating {
+  font-size: larger;
+  font-weight: bold;
+}
+
+p.stock {
+  font-size: larger;
+  color: red;
+}
+
+p.color {
+  font-size: large;
+}
+
+p.description {
+  font-size: large;
+  line-height: 1.5rem;
+}
+
+p.items {
+  font-size: large;
+  font-weight: bolder;
+}
+
+.item-desc {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 /* Footer page */

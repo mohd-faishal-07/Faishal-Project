@@ -22,10 +22,7 @@ export const ProductDetails = () => {
 
   const params = useParams();
   console.log(params.id);
-  const product = {
-    name : "iphone",
-    price : 1200000
-  }
+  
   return (
     <>
       <div className='details'>
@@ -48,8 +45,7 @@ export const ProductDetails = () => {
                         <div className='item-desc'>
                           <p className='description'>{item.description}</p>
                         </div>
-                        <Link to="#" onClick={()=>dispatch(addToCart(product))}>Add to Cart</Link>
-                        <Link to="#" onClick={()=>dispatch(removeToCart(product))}>Remove to Cart</Link>
+                        <Link to="#" onClick={()=>dispatch(addToCart(item))}>Add to Cart</Link>
                       </div>
                     </>
                   )

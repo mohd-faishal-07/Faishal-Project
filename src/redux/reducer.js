@@ -9,8 +9,8 @@ export const cartData = (data = [], action)=>{
             return [action.data, ...data]
         
         case REMOVE_TO_CART:
-            data.length= data.length? data.length-1:[]
-                return [...data]
+            const remainingItems= data.filter((item)=>item.id!==action.data)
+            return [...remainingItems]
 
         default:
             return []

@@ -28,7 +28,7 @@ export default function Navbar() {
                             <ul>
                                 <li><Link to='#'><FaRegHeart/></Link></li>
                                 <li><Link to='#'><AiOutlineUser/></Link></li>
-                                <li className="first-list"><Link to='#'><IoBagOutline /></Link></li>
+                                <li className="first-list"><Link to='/cart'><IoBagOutline /></Link></li>
                                 <span className="cart-count">{result.length}</span>
 
                             </ul>

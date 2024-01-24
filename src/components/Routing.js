@@ -4,6 +4,7 @@ import { ProductDetails } from './ProductDetails'
 import { Products } from './Products'
 import Navbar from './Navbar'
 import { Cart } from './Cart'
+import { Contact } from './Contact'
 
 export default function Routing() {
     return (
@@ -15,6 +16,7 @@ export default function Routing() {
                     <Route path='/products' element={<Products />}></Route>
                     <Route path='/productdetails/:id' element={<ProductDetails />}></Route>
                     <Route path='/cart' element={<Cart/>}></Route>
+                    <Route path='/contact' element={<Contact/>}></Route>
                 </Routes>
             </BrowserRouter>
         </>

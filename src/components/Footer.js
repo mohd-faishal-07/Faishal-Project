@@ -14,7 +14,7 @@ export const Footer = () => {
                             <p>Contact</p>
                         </Link>
                         <ul>
-                            <li><Link to="#">Contact Us</Link></li>
+                            <li><Link to="/contact">Contact Us</Link></li>
                             <li><Link to="#">hello@ekart.com</Link></li>
                             <li><Link to="#">Order</Link></li>
                             <li><Link to="#">Affiliate</Link></li>

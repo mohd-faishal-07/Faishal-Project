@@ -49,7 +49,7 @@ body {
 }
 
 hr {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .logo {
@@ -69,10 +69,10 @@ hr {
 }
 
 .name a {
-  font-size: xx-large;
+  font-size: xxx-large;
   font-weight: bolder;
   color: white;
-  text-shadow: 1px 1px white;
+  text-shadow: 3px -1px white;
   text-decoration: none;
 }
 
@@ -183,7 +183,7 @@ hr {
 /* Products Page css */
 
 
-.products-page .sc-beySPh.gZmPOF svg {
+.products-page svg {
   margin: 0 auto;
 }
 
@@ -200,8 +200,9 @@ hr {
 }
 
 .products {
-  display: grid;
-  grid-template-columns: 2fr 2fr 2fr;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 30px;
   margin-top: 50px;
 }
@@ -210,6 +211,7 @@ hr {
   text-decoration: none;
   color: black;
   background-color: white;
+  width: 30%;
 }
 
 .price {
@@ -354,8 +356,9 @@ hr {
 /* Details Page */
 
 .all-details {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
   margin: 60px 0px;
 }
@@ -365,22 +368,30 @@ hr {
   height: 500px;
 }
 
+
+.detail-img {
+  width: 44%;
+}
+
 .product-desc {
   line-height: 2.5rem;
   text-align: justify;
+  width: 50%;
 }
 
-.product-desc a {
+.product-desc a,
+.cart-button a {
   padding: 10px;
   text-decoration: none;
   color: black;
   border: 1px solid grey;
   background-color: rgb(190, 190, 190);
   border-radius: 5px;
- 
+
 }
 
-.product-desc a:hover {
+.product-desc a:hover,
+.cart-button a:hover {
   background-color: grey;
   color: white;
 }
@@ -434,10 +445,11 @@ th {
 .cart table {
   width: 100%;
 }
-
+.cart svg{
+  cursor: pointer;
+}
 .price-adjust {
-  position: relative;
-  float: right;
+  display: inline-block;
 
 }
 
@@ -453,6 +465,65 @@ th {
   height: 100px;
 }
 
+.counter {
+  display: flex;
+  justify-content: space-around;
+}
+
+.counter svg{
+  cursor: pointer;
+}
+
+/* Contact us  page*/
+.contacting{
+  display: flex;
+  justify-content: center;
+  min-height: 200px;
+  gap: 30px;
+}
+.message{
+  width: 30%;
+  background-color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  flex: 1;
+}
+.message a{
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid grey;
+  background-color: rgb(190, 190, 190);
+  border-radius: 5px;
+}
+.message a:hover{
+  color: white;
+  background-color: gray;
+}
+.message span{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.heading{
+  font-size: larger;
+  font-weight: bold;
+}
+.heading-contact p{
+  font-size: xx-large;
+  font-weight: bolder;
+  text-shadow: 2px 2px #282c34;
+  padding: 20px;
+  margin: 10px;
+  
+}
+.contact-content{
+  line-height: 2rem;
+  font-size: 15px;
+  text-align: justify;
+  padding: 25px;
+  min-height: 160px;
+}
 /* Footer page */
 .foot {
   display: flex;

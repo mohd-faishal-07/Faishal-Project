@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Faishal-Project/static/css/main.a019e2bd.css",
-    "main.js": "/Faishal-Project/static/js/main.9791bd80.js",
+    "main.css": "/Faishal-Project/static/css/main.217b1e35.css",
+    "main.js": "/Faishal-Project/static/js/main.cccc41c3.js",
     "static/js/787.8cf52469.chunk.js": "/Faishal-Project/static/js/787.8cf52469.chunk.js",
     "static/media/homebanner.jpg": "/Faishal-Project/static/media/homebanner.8d51b5cb74bd50426c63.jpg",
     "static/media/logo.svg": "/Faishal-Project/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Faishal-Project/index.html",
-    "main.a019e2bd.css.map": "/Faishal-Project/static/css/main.a019e2bd.css.map",
-    "main.9791bd80.js.map": "/Faishal-Project/static/js/main.9791bd80.js.map",
+    "main.217b1e35.css.map": "/Faishal-Project/static/css/main.217b1e35.css.map",
+    "main.cccc41c3.js.map": "/Faishal-Project/static/js/main.cccc41c3.js.map",
     "787.8cf52469.chunk.js.map": "/Faishal-Project/static/js/787.8cf52469.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a019e2bd.css",
-    "static/js/main.9791bd80.js"
+    "static/css/main.217b1e35.css",
+    "static/js/main.cccc41c3.js"
   ]
 }

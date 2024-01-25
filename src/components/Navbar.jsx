@@ -20,7 +20,7 @@ export default function Navbar() {
                             </Link>
                         </div>
                         <div className="name">
-                            <Link to="#">
+                            <Link to="/home">
                                 E-KART
                             </Link>
                         </div>
@@ -37,6 +37,7 @@ export default function Navbar() {
                     <ul>
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/products'>Products</Link></li>
+                        <li><Link to='/about'>About Us</Link></li>
                         <li><Link to='/contact'>Contact Us</Link></li>
                     </ul>
                 </div>

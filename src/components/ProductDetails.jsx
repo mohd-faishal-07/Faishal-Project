@@ -2,13 +2,16 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Footer } from './Footer';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeToCart } from '../redux/action';
 
 export const ProductDetails = () => {
 
   const [data, setData] = useState([])
-  const dispatch =  useDispatch()
+  const [disabled, setDisabled] = useState(false);
+  const cartData = useSelector((state) => state.cartData);
+
+  const dispatch = useDispatch()
   console.log(data);
   useEffect(() => {
     axios
@@ -22,7 +25,17 @@ export const ProductDetails = () => {
 
   const params = useParams();
   console.log(params.id);
-  
+
+
+  useEffect(() => {
+    const isInCart = cartData.some(item => item.id == params.id);
+    setDisabled(isInCart);
+  }, [cartData, params.id]);
+
+  function handleProduct(item) {
+    dispatch(addToCart(item))
+    setDisabled(true)
+  }
   return (
     <>
       <div className='details'>
@@ -45,8 +58,14 @@ export const ProductDetails = () => {
                         <div className='item-desc'>
                           <p className='description'>{item.description}</p>
                         </div>
-                        <Link to="#" onClick={()=>dispatch(addToCart(item))}>Add to Cart</Link>
+                        {disabled ? (
+                          <Link to="/cart">View on Cart</Link>
+                        ) : (
+                          <Link to="#" onClick={() => handleProduct(item)} disabled={disabled}>Add to Cart</Link>
+                        )
+                        }
                       </div>
+                      
                     </>
                   )
                 }

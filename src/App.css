@@ -72,7 +72,7 @@ hr {
   font-size: xxx-large;
   font-weight: bolder;
   color: white;
-  text-shadow: 3px -1px white;
+  text-shadow: 2px 2px white;
   text-decoration: none;
 }
 
@@ -178,6 +178,35 @@ hr {
   font-size: large;
   font-weight: bold;
   line-height: 40px;
+}
+
+.ends-soon {
+  background-color: #f9f9c6;
+  margin: 35px 0px;
+}
+
+.ends .end-heading {
+  font-size: xxx-large;
+  font-weight: bolder;
+}
+
+.loved-heading p {
+  font-size: xx-large;
+  font-weight: bold;
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+
+.loved-img {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.loved-img img {
+  width: 200px;
+  height: 200px;
 }
 
 /* Products Page css */
@@ -379,6 +408,10 @@ hr {
   width: 50%;
 }
 
+.cart-button {
+  margin: 25px;
+}
+
 .product-desc a,
 .cart-button a {
   padding: 10px;
@@ -445,9 +478,11 @@ th {
 .cart table {
   width: 100%;
 }
-.cart svg{
+
+.cart svg {
   cursor: pointer;
 }
+
 .price-adjust {
   display: inline-block;
 
@@ -470,25 +505,32 @@ th {
   justify-content: space-around;
 }
 
-.counter svg{
+.counter svg {
   cursor: pointer;
 }
 
+p.cart-empty {
+  font-size: large;
+  margin: 40px;
+}
+
 /* Contact us  page*/
-.contacting{
+.contacting {
   display: flex;
   justify-content: center;
   min-height: 200px;
   gap: 30px;
 }
-.message{
+
+.message {
   width: 30%;
   background-color: white;
   padding: 10px;
   box-sizing: border-box;
   flex: 1;
 }
-.message a{
+
+.message a {
   padding: 5px;
   text-decoration: none;
   color: black;
@@ -496,34 +538,60 @@ th {
   background-color: rgb(190, 190, 190);
   border-radius: 5px;
 }
-.message a:hover{
+
+.message a:hover {
   color: white;
   background-color: gray;
 }
-.message span{
+
+.message span {
   display: flex;
   justify-content: center;
   margin: 10px;
 }
-.heading{
+
+.heading {
   font-size: larger;
   font-weight: bold;
 }
-.heading-contact p{
+
+.heading-contact p {
   font-size: xx-large;
   font-weight: bolder;
   text-shadow: 2px 2px #282c34;
   padding: 20px;
   margin: 10px;
-  
+
 }
-.contact-content{
+
+.contact-content {
   line-height: 2rem;
   font-size: 15px;
   text-align: justify;
   padding: 25px;
   min-height: 160px;
 }
+
+/* About us page */
+.headings .about-heading {
+  font-size: large;
+  font-weight: bold;
+  margin: 15px 0px;
+}
+
+.about {
+  text-align: justify;
+}
+
+.headings .about-desc {
+  margin: 18px;
+}
+
+.about-desc ul {
+  margin: 0px 25px;
+  font-size: medium;
+}
+
 /* Footer page */
 .foot {
   display: flex;

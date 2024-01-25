@@ -15,8 +15,8 @@ export const Footer = () => {
                         </Link>
                         <ul>
                             <li><Link to="/contact">Contact Us</Link></li>
-                            <li><Link to="#">hello@ekart.com</Link></li>
-                            <li><Link to="#">Order</Link></li>
+                            <li><Link to="/contact">hello@ekart.com</Link></li>
+                            <li><Link to="/products">Order</Link></li>
                             <li><Link to="#">Affiliate</Link></li>
                         </ul>
                     </div>
@@ -25,7 +25,7 @@ export const Footer = () => {
                             <p>Care</p>
                         </Link>
                         <ul>
-                            <li><Link to="#">Shipping & Delivery</Link></li>
+                            <li><Link to="/cart">Shipping & Delivery</Link></li>
                             <li><Link to="#">Returns & Exchange</Link></li>
                             <li><Link to="#">Warranty</Link></li>
                             <li><Link to="#">Payment Plans</Link></li>

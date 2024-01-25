@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Footer } from "./Footer";
+import { MostLoved } from "./MostLoved";
 
 export default function Home() {
     return (
@@ -51,6 +52,16 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <div className="ends-soon">
+                <div className="container">
+                    <div className="ends">
+                        <p className="end-heading">
+                            Ends Soon!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <MostLoved />
             <Footer />
         </>
     )

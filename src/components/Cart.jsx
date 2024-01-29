@@ -60,35 +60,36 @@ export const Cart = () => {
                 <div className='container'>
                     {cartData.length >= 1 ? (
                         <div className='cart'>
-                            <table>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Color</th>
-                                    <th>Item Count</th>
-                                    <th>Price</th>
-                                    <th>Remove</th>
-                                </tr>
-                                {
-                                    cartData.map((item) =>
-                                        <tr>
-                                            <td><img src={item.image} alt='img' /></td>
-                                            <td>{item.title}</td>
-                                            <td>{item.color}</td>
-                                            <td>
-                                                <div className='counter'>
-                                                    <FaMinus onClick={() => decrementCounter(item.id)} />
-                                                    {counts[item.id] || 1}
-                                                    <FaPlus onClick={() => incrementCounter(item.id, item)} />
-                                                </div>
-                                            </td>
-                                            <td>${(price[item.id] || item.price).toFixed(2)}</td>
-                                            <td onClick={() => dispatch(removeToCart(item.id))}><ImBin /></td>
-                                        </tr>
-                                    )
-                                }
-                            </table>
-
+                            <div className='cart-table'>
+                                <table>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Color</th>
+                                        <th>Item Count</th>
+                                        <th>Price</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                    {
+                                        cartData.map((item) =>
+                                            <tr>
+                                                <td><img src={item.image} alt='img' /></td>
+                                                <td>{item.title}</td>
+                                                <td>{item.color}</td>
+                                                <td>
+                                                    <div className='counter'>
+                                                        <FaMinus onClick={() => decrementCounter(item.id)} />
+                                                        {counts[item.id] || 1}
+                                                        <FaPlus onClick={() => incrementCounter(item.id, item)} />
+                                                    </div>
+                                                </td>
+                                                <td>${(price[item.id] || item.price).toFixed(2)}</td>
+                                                <td onClick={() => dispatch(removeToCart(item.id))}><ImBin /></td>
+                                            </tr>
+                                        )
+                                    }
+                                </table>
+                            </div>
                             <div className='price-adjust'>
                                 <div className='adjustments'>SubTotal</div>
                                 <div className='adjustments'>Amount : <span>${amount}</span></div>

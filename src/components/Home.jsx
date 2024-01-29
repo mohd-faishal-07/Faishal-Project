@@ -9,7 +9,7 @@ export default function Home() {
                 <div className="container">
                     <div className="banner">
                         <div className="right">
-                            <h2>Every product is special</h2>
+                            <h2 className="heading2">Every product is special</h2>
                             <Link to="/products">Shop Now</Link>
                         </div>
                     </div>

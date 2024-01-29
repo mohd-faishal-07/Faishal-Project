@@ -28,7 +28,7 @@ export const Contact = () => {
                                     Email Us
                                 </p>
                                 <p className='contact-content'>
-                                    Send an email to mailto:hello@ekart.com for any questions or concerns. Our Customer Care Team will be happy to assist you. We strive to respond to all inquiries within 1 business day!
+                                    Send an email to mailto : hello@ekart.com for any questions or concerns. Our Customer Care Team will be happy to assist you. We strive to respond to all inquiries within 1 business day!
                                 </p>
                                 <span><Link to="#">Email Us</Link></span>
 

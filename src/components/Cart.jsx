@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ImBin } from "react-icons/im";
-import { addToCart, removeToCart } from '../redux/action';
 import { Link } from 'react-router-dom';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import { Footer } from './Footer';
+import { removeCartCount, removeFromCart, removeToCart, updateCartCount } from '../redux/action';
 
 export const Cart = () => {
 
     const [counts, setCounts] = useState({});
     const [price, setPrice] = useState({})
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const storedCounts = JSON.parse(localStorage.getItem('cartCounts')) || {};
+        setCounts(storedCounts);
+    }, []);
+
+
 
     const cartData = useSelector((state) => state.cartData)
     let amount = cartData.length && Object.values(price).reduce((prev, next) => prev + next, 0).toFixed(2);
@@ -25,7 +32,12 @@ export const Cart = () => {
             updatedPricesObj[item.id] = item.price * count;
         });
         setPrice(updatedPricesObj);
+
+       
+
     }, [counts, cartData]);
+
+
 
 
     const checkoutLink = (
@@ -38,20 +50,35 @@ export const Cart = () => {
 
 
     const incrementCounter = (id, item) => {
-        setCounts((prevCounts) => ({
-            ...prevCounts,
-            [id]: (prevCounts[id] || 0) + 1,
-        }));
+        const updatedCounts = {
+            ...counts,
+            [id]: (counts[id] || 1) + 1,
+        };
+        setCounts(updatedCounts);
+        dispatch(updateCartCount(updatedCounts));
+
+        localStorage.setItem('cartCounts', JSON.stringify(counts));
     };
 
-    const decrementCounter = (id) => {
-        if (counts[id] > 0) {
-            setCounts((prevCounts) => ({
-                ...prevCounts,
-                [id]: prevCounts[id] - 1,
-            }));
-        }
+    const decrementCounter = (id, item) => {
+        if (counts[id] > 1) {
+            const updatedCounts = {
+                ...counts,
+                [id]: counts[id] - 1,
+            };
+            setCounts(updatedCounts);
+            dispatch(updateCartCount(updatedCounts));
 
+            localStorage.setItem('cartCounts', JSON.stringify(counts));
+        }
+        else{
+            dispatch(removeToCart(item));
+            dispatch(removeCartCount(id))
+
+            const updatedCounts = { ...counts };
+            delete updatedCounts[id];
+            localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
+        }
     };
 
     return (
@@ -68,7 +95,6 @@ export const Cart = () => {
                                         <th>Color</th>
                                         <th>Item Count</th>
                                         <th>Price</th>
-                                        <th>Remove</th>
                                     </tr>
                                     {
                                         cartData.map((item) =>
@@ -78,13 +104,13 @@ export const Cart = () => {
                                                 <td>{item.color}</td>
                                                 <td>
                                                     <div className='counter'>
-                                                        <FaMinus onClick={() => decrementCounter(item.id)} />
+                                                        <FaMinus onClick={() => decrementCounter(item.id, item)} />
                                                         {counts[item.id] || 1}
-                                                        <FaPlus onClick={() => incrementCounter(item.id, item)} />
+                                                        <FaPlus onClick={() => incrementCounter(item.id, item)
+                                                        } />
                                                     </div>
                                                 </td>
                                                 <td>${(price[item.id] || item.price).toFixed(2)}</td>
-                                                <td onClick={() => dispatch(removeToCart(item.id))}><ImBin /></td>
                                             </tr>
                                         )
                                     }

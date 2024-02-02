@@ -7,8 +7,15 @@ import { useSelector } from "react-redux";
 
 export default function Navbar() {
 
-    const result = useSelector((state)=>state.cartData)
-    console.log("data",result);
+    // const storedCounts = JSON.parse(localStorage.getItem('cartCounts')) || {};
+    // const totalCartCount = Object.values(storedCounts).reduce((acc, count) => acc + count, 0);
+    // const result = useSelector((state)=>state.cartData)
+    // console.log("data",result);
+
+    const cartCounts = useSelector((state) => state.increment.cartCounts || {});
+    const totalCartCount = Object.values(cartCounts).reduce((acc, count) => acc + count, 0);
+  
+
     return (
         <div className="nav">
             <div className="container">
@@ -27,7 +34,7 @@ export default function Navbar() {
                         <div className="icons">
                             <ul>
                                 <li className="first-list"><Link to='/cart'><IoBagOutline /></Link></li>
-                                <span className="cart-count">{result.length}</span>
+                                <span className="cart-count">{totalCartCount}</span>
 
                             </ul>
                         </div>

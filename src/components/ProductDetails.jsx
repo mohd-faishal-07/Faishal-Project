@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Footer } from './Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeToCart } from '../redux/action';
+import { addToCart, removeToCart, updateCartCount } from '../redux/action';
 
 export const ProductDetails = () => {
 
   const [data, setData] = useState([])
   const [disabled, setDisabled] = useState(false);
   const cartData = useSelector((state) => state.cartData);
+  const counts = useSelector((state) => state.increment.cartCounts);
 
   const dispatch = useDispatch()
   console.log(data);
@@ -32,8 +33,10 @@ export const ProductDetails = () => {
     setDisabled(isInCart);
   }, [cartData, params.id]);
 
-  function handleProduct(item) {
+  function handleProduct(item, id) {
     dispatch(addToCart(item))
+    const updatedCounts = { ...counts, [id]: (counts[id] || 0) + 1 };
+    dispatch(updateCartCount(updatedCounts));
     setDisabled(true)
   }
   return (
@@ -42,7 +45,7 @@ export const ProductDetails = () => {
         <div className='container'>
           <div className='all-details'>
             {
-              data.map((item) => {
+              data.map((item) => { 
                 if (item.id == params.id) {
                   return (
                     <>
@@ -61,7 +64,7 @@ export const ProductDetails = () => {
                         {disabled ? (
                           <Link to="/cart">View on Cart</Link>
                         ) : (
-                          <Link to="#" onClick={() => handleProduct(item)} disabled={disabled}>Add to Cart</Link>
+                          <Link to="#" onClick={() => handleProduct(item, item.id)} disabled={disabled}>Add to Cart</Link>
                         )
                         }
                       </div>

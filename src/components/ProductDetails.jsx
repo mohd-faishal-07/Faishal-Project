@@ -38,6 +38,9 @@ export const ProductDetails = () => {
     const updatedCounts = { ...counts, [id]: (counts[id] || 0) + 1 };
     dispatch(updateCartCount(updatedCounts));
     setDisabled(true)
+
+    localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
+
   }
   return (
     <>

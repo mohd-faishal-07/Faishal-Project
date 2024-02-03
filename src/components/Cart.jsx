@@ -19,7 +19,6 @@ export const Cart = () => {
     }, []);
 
 
-
     const cartData = useSelector((state) => state.cartData)
     let amount = cartData.length && Object.values(price).reduce((prev, next) => prev + next, 0).toFixed(2);
     console.log(cartData);
@@ -33,7 +32,7 @@ export const Cart = () => {
         });
         setPrice(updatedPricesObj);
 
-       
+
 
     }, [counts, cartData]);
 
@@ -42,7 +41,7 @@ export const Cart = () => {
 
     const checkoutLink = (
         <div className='cart-button'>
-            <Link to='/products' onClick={() => cartData.forEach((item) => dispatch(removeToCart(item.id)))}>
+            <Link to='/checkout'>
                 Proceed to CheckOut
             </Link>
         </div>
@@ -50,35 +49,42 @@ export const Cart = () => {
 
 
     const incrementCounter = (id, item) => {
-        const updatedCounts = {
-            ...counts,
-            [id]: (counts[id] || 1) + 1,
-        };
-        setCounts(updatedCounts);
-        dispatch(updateCartCount(updatedCounts));
+        setCounts((prevCounts) => {
+            const currentCount = prevCounts[id] || 1;
+            const updatedCount = Math.min(currentCount + 1, 5); 
+            const updatedCounts = {
+                ...prevCounts,
+                [id]: updatedCount,
+            };
+            dispatch(updateCartCount(updatedCounts));
+            localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
+            return updatedCounts;
 
-        localStorage.setItem('cartCounts', JSON.stringify(counts));
+        });
     };
 
     const decrementCounter = (id, item) => {
-        if (counts[id] > 1) {
-            const updatedCounts = {
-                ...counts,
-                [id]: counts[id] - 1,
-            };
-            setCounts(updatedCounts);
-            dispatch(updateCartCount(updatedCounts));
+        setCounts((prevCounts) => {
+            if (prevCounts[id] > 1) {
+                const updatedCounts = {
+                    ...prevCounts,
+                    [id]: prevCounts[id] - 1,
+                };
+                dispatch(updateCartCount(updatedCounts));
+                localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
+                return updatedCounts;
+            } else {
+                dispatch(removeToCart(item));
+                dispatch(removeCartCount(id));
 
-            localStorage.setItem('cartCounts', JSON.stringify(counts));
-        }
-        else{
-            dispatch(removeToCart(item));
-            dispatch(removeCartCount(id))
+                const updatedCounts = { ...prevCounts };
+                delete updatedCounts[id];
+                localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
+                return updatedCounts;
+            }
+        });
 
-            const updatedCounts = { ...counts };
-            delete updatedCounts[id];
-            localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
-        }
+
     };
 
     return (

@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import { Cart } from './Cart'
 import { Contact } from './Contact'
 import { About } from './About'
+import { Checkout } from './Checkout'
 
 export default function Routing() {
     return (
@@ -19,6 +20,7 @@ export default function Routing() {
                     <Route path='/cart' element={<Cart/>}></Route>
                     <Route path='/contact' element={<Contact/>}></Route>
                     <Route path='/about' element={<About/>}></Route>
+                    <Route path='/checkout' element={<Checkout/>}></Route>
                 </Routes>
             </BrowserRouter>
         </>

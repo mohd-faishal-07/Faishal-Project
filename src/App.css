@@ -793,7 +793,8 @@ p.account {
   text-decoration: none;
   float: right;
 }
-.continue-payment a:hover{
+
+.continue-payment a:hover {
   background-color: gray;
 }
 
@@ -801,14 +802,17 @@ p.account {
   font-size: xx-large;
   float: left;
 }
-.inputs select{
+
+.inputs select {
   max-width: 100%;
 }
+
 .checkboxes input[type="checkbox"] {
   accent-color: white;
   border: 5px solid black;
   margin: 0px 10px 0px 0px;
 }
+
 p.save-account {
   text-align: left;
 }
@@ -836,6 +840,109 @@ p.billing {
   text-align: left;
   font-size: 20px;
 }
+
+.select-showroom {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.select-showroom a {
+  color: black;
+}
+
+.popup-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: larger;
+  margin: 15px 0px;
+}
+
+.popup-contents {
+  width: 500px;
+  padding: 15px 0px;
+}
+
+.popup-heading a {
+  text-decoration: none;
+  color: black;
+}
+
+p.loc-heading {
+  font-size: 14px;
+  font-weight: bolder;
+  margin: 10px 0px;
+}
+
+.loc-desc {
+  width: 42%;
+}
+
+.location-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+p.loc-address {
+  font-size: 14px;
+}
+
+.select-btn a {
+  background-color: lightgrey;
+  text-decoration: none;
+  color: black;
+  padding: 7px 24px;
+}
+
+.select-btn a:hover {
+  background-color: gray;
+  color: white;
+}
+
+.popup-content {
+  padding: 0px 30px;
+  width: 560px;
+  background-color: white;
+  position: absolute;
+  z-index: 999;
+  pointer-events: auto;
+  max-height: 550px;
+  overflow-y: scroll;
+}
+
+.locations input {
+  width: 60%;
+  border: 1px solid grey;
+  padding: 5px;
+}
+
+.locations svg {
+  font-size: large;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+span.search {
+  border: 1px solid grey;
+  padding: 3px;
+  padding: 14px 14px;
+  position: absolute;
+  border-left: none;
+}
+
+.load-btn a {
+  background-color: lightgrey;
+  text-decoration: none;
+  color: black;
+  padding: 7px 24px;
+}
+
+.load-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+
 @media (max-width: 1306px) {
   .icons .cart-count {
     right: 78px;

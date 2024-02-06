@@ -4,6 +4,8 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { Link } from 'react-router-dom'
 import { Pickup } from './Pickup';
 import { BillingAddress } from './BillingAddress';
+import { validateAddress, validateCpass, validateEmail, validateName, validatePass, validatePostCode, validateTelephone } from './ValidationFunctions';
+import { Footer } from './Footer';
 
 export const Checkout = () => {
     const cartData = useSelector(state => state.cartData);
@@ -16,152 +18,28 @@ export const Checkout = () => {
         setChecked(!checked)
     }
 
-    function validateName(value) {
-        const element = document.querySelector("#firstName + .error_1")
-        var reg = /^[a-z A-Z]+$/;
-        if (!value.trim()) {
-            element.textContent = "First Name is Required"
-        }
-        else if (!reg.test(value)) {
-            element.textContent = "Please enter a valid Name"
-        }
-        else {
-            element.textContent = "";
-        }
-    }
-    function validateLastName(value) {
-        const element = document.querySelector("#lastName + .error_1")
-        var reg = /^[a-z A-Z]+$/;
-
-        if (!value.trim()) {
-            element.textContent = "Last Name is Required"
-        }
-        else if (!reg.test(value)) {
-            element.textContent = "Please enter a valid Name"
-        }
-        else {
-            element.textContent = "";
-        }
-    }
-
-    function validateAddress(value) {
-        const element = document.querySelector("#address + .error_1")
-        if (!value.trim()) {
-            element.textContent = "Address Line 1 is Required"
-        }
-        else {
-            element.textContent = "";
-        }
-    }
-
-    function validateCity(value) {
-        const element = document.querySelector("#city + .error_1")
-        var reg = /^[a-z A-Z]+$/;
-        if (!value.trim()) {
-            element.textContent = "City/Town is required"
-        }
-        else if (!reg.test(value)) {
-            element.textContent = "Please enter a valid City"
-        }
-        else {
-            element.textContent = "";
-        }
-    }
-
-    function validatePostCode(value) {
-        const element = document.querySelector("#postcode + .error_1")
-        if (!value.trim()) {
-            element.textContent = "Zip Code is required."
-        }
-        else if (isNaN(value)) {
-            element.textContent = "Please enter Valid Zip code"
-        }
-        else {
-            element.textContent = "";
-        }
-    }
-
-    function validateEmail(value) {
-        const element = document.querySelector("#email + .error_1")
-        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!value.trim()) {
-            element.textContent = "Email Address is required."
-        }
-        else if (!reg.test(value)) {
-            element.textContent = "Please enter Valid Email Address"
-        }
-        else {
-            element.textContent = "";
-        }
-    }
-
-    function validateTelephone(value) {
-        const element = document.querySelector("#telephone + .error_1")
-        if (!value.trim()) {
-            element.textContent = "Telephone is required."
-        }
-        else if (isNaN(value) || value.length < 10) {
-            element.textContent = "Please enter valid Telephone Number"
-        }
-        else {
-            element.textContent = "";
-        }
-    }
-
-    function validateSelectCity(value) {
-        const element = document.querySelector("#selectCity + .error_1");
-
-        if (!value.trim()) {
-            element.textContent = "City is required.";
-        } else {
-            element.textContent = "";
-        }
-    }
-
-    function validatePass(value) {
-        const element = document.querySelector("#pass + .error_1");
-        if (value.length < 8) {
-            element.textContent = "Password should contain atleast 8 characters"
-        }
-        else {
-            element.textContent = ""
-        }
-    }
-
-    function validateCpass(value) {
-        const element = document.querySelector("#cpass + .error_1");
-        const passwordValue = document.getElementById("pass").value;
-
-        if (value.length < 8) {
-            element.textContent = "Password should contain atleast 8 characters";
-        } else if (value !== passwordValue) {
-            element.textContent = "Passwords do not match";
-        } else {
-            element.textContent = "";
-        }
-    }
+    
     function handleValidations() {
-        validateName(document.getElementById('firstName').value);
-        validateLastName(document.getElementById('lastName').value);
-        validateAddress(document.getElementById('address').value);
-        validateCity(document.getElementById('city').value);
-        validatePostCode(document.getElementById('postcode').value);
-        validateEmail(document.getElementById('email').value);
-        validateTelephone(document.getElementById('telephone').value);
-        validateSelectCity(document.getElementById('selectCity').value);
-        validatePass(document.getElementById('pass').value);
-        validateCpass(document.getElementById('cpass').value);
+        validateName(document.getElementById('firstName').value, 'firstName', 'First Name');
+        validateName(document.getElementById('lastName').value, 'lastName', 'Last Name');
+        validateAddress(document.getElementById('address').value, 'address', 'Address');
+        validateName(document.getElementById('city').value, 'city', 'City/Town');
+        validatePostCode(document.getElementById('postcode').value, 'postcode', 'Zip Code');
+        validateEmail(document.getElementById('email').value, 'email', 'Email Address');
+        validateTelephone(document.getElementById('telephone').value, 'telephone', 'Telephone');
+        validateAddress(document.getElementById('selectCity').value, 'selectCity', 'City');
+        validatePass(document.getElementById('pass').value, 'pass', 'Password');
+        validateCpass(document.getElementById('cpass').value, 'cpass','Confirm Password');
 
         console.log("Checked:", checked);
-        // document.querySelectorAll(".error_1");
         if(!checked){
-            validateName(document.getElementById('billingfirstName').value);
-            validateLastName(document.getElementById('billinglastName').value);
-            validateAddress(document.getElementById('billingaddress').value);
-            validateCity(document.getElementById('billingcity').value);
-            validatePostCode(document.getElementById('billingpostcode').value);
-            validateTelephone(document.getElementById('billingtelephone').value);
-            validateSelectCity(document.getElementById('billingselectCity').value);
+            validateName(document.getElementById('billingfirstName').value, 'billingfirstName', 'First Name');
+            validateName(document.getElementById('billinglastName').value, 'billinglastName', 'Last Name');
+            validateAddress(document.getElementById('billingaddress').value, 'billingaddress', 'Address');
+            validateName(document.getElementById('billingcity').value, 'billingcity', 'City/Town');
+            validatePostCode(document.getElementById('billingpostcode').value, 'billingpostcode', 'Zip Code');
+            validateTelephone(document.getElementById('billingtelephone').value, 'billingtelephone', 'Telephone');
+            validateAddress(document.getElementById('billingselectCity').value, 'billingselectCity', 'City');
         }
     }
     return (
@@ -179,18 +57,18 @@ export const Checkout = () => {
                                     <form action="">
                                         <div className='group-fields two-fields'>
                                             <div className="inputs">
-                                                <input type="text" placeholder='First Name' maxLength={30} onChange={(e) => validateName(e.target.value)} id='firstName' />
+                                                <input type="text" placeholder='First Name' maxLength={30} onChange={(e) => validateName(e.target.value,'firstName','First Name')} id='firstName' />
                                                 <div className="error_1"></div>
                                             </div>
                                             <div className="inputs">
-                                                <input type="text" placeholder='Last Name' id='lastName' onChange={(e) => validateLastName(e.target.value)} />
+                                                <input type="text" placeholder='Last Name' id='lastName' onChange={(e) => validateName(e.target.value, 'lastName', 'Last Name')} />
                                                 <div className="error_1"></div>
                                             </div>
                                         </div>
                                         <div className='group-fields'>
 
                                             <div className="full-width">
-                                                <input type="text" placeholder='Address Line 1' id='address' onChange={(e) => validateAddress(e.target.value)} />
+                                                <input type="text" placeholder='Address Line 1' id='address' onChange={(e) => validateAddress(e.target.value, 'address', 'Address')} />
                                                 <div className="error_1"></div>
                                             </div>
                                             <div className="full-width">
@@ -199,7 +77,7 @@ export const Checkout = () => {
                                         </div>
                                         <div className='group-fields two-fields'>
                                             <div className="inputs">
-                                                <input type="text" placeholder='City' onChange={(e) => validateCity(e.target.value)} id='city' />
+                                                <input type="text" placeholder='City' onChange={(e) => validateName(e.target.value, 'city', 'City/Town')} id='city' />
                                                 <div className="error_1"></div>
                                             </div>
                                             <select name="" id="">
@@ -213,11 +91,11 @@ export const Checkout = () => {
                                         </div>
                                         <div className='group-fields two-fields'>
                                             <div className="inputs">
-                                                <input type="text" placeholder='Postcode' id='postcode' onChange={(e) => validatePostCode(e.target.value)} />
+                                                <input type="text" placeholder='Postcode' id='postcode' onChange={(e) => validatePostCode(e.target.value, 'postcode', 'Zip Code')} />
                                                 <div className="error_1"></div>
                                             </div>
                                             <div className="inputs">
-                                                <select name="" id="selectCity" onChange={(e) => validateSelectCity(e.target.value)}>
+                                                <select name="" id="selectCity" onChange={(e) => validateAddress(e.target.value, 'selectCity', 'City')}>
                                                     <option value="">Select Country</option>
                                                     <option value="Chandigarh">Chandigarh</option>
                                                     <option value="Delhi">Delhi</option>
@@ -230,11 +108,11 @@ export const Checkout = () => {
                                         </div>
                                         <div className='group-fields two-fields'>
                                             <div className="inputs">
-                                                <input type="text" placeholder='Email Address' id='email' onChange={(e) => validateEmail(e.target.value)} />
+                                                <input type="text" placeholder='Email Address' id='email' onChange={(e) => validateEmail(e.target.value, 'email', 'Email Address')} />
                                                 <div className="error_1"></div>
                                             </div>
                                             <div className="inputs">
-                                                <input type="tel" placeholder='Telephone' id='telephone' maxLength={10} onChange={(e) => validateTelephone(e.target.value)} />
+                                                <input type="tel" placeholder='Telephone' id='telephone' maxLength={10} onChange={(e) => validateTelephone(e.target.value, 'telephone', 'Telephone Number')} />
                                                 <div className="error_1"></div>
                                             </div>
                                         </div>
@@ -245,18 +123,18 @@ export const Checkout = () => {
                                                 <div>
                                                     <div className='group-fields two-fields'>
                                                         <div className="inputs">
-                                                            <input type="text" placeholder='First Name' maxLength={30} onChange={(e) => validateName(e.target.value)} id='billingfirstName' />
+                                                            <input type="text" placeholder='First Name' maxLength={30} onChange={(e) => validateName(e.target.value, 'billingfirstName', 'First Name')} id='billingfirstName' />
                                                             <div className="error_1"></div>
                                                         </div>
                                                         <div className="inputs">
-                                                            <input type="text" placeholder='Last Name' id='billinglastName' onChange={(e) => validateLastName(e.target.value)} />
+                                                            <input type="text" placeholder='Last Name' id='billinglastName' onChange={(e) => validateName(e.target.value, 'billinglastName', 'Last Name')} />
                                                             <div className="error_1"></div>
                                                         </div>
                                                     </div>
                                                     <div className='group-fields'>
 
                                                         <div className="full-width">
-                                                            <input type="text" placeholder='Address Line 1' id='billingaddress' onChange={(e) => validateAddress(e.target.value)} />
+                                                            <input type="text" placeholder='Address Line 1' id='billingaddress' onChange={(e) => validateAddress(e.target.value, 'billingaddress', 'Address')} />
                                                             <div className="error_1"></div>
                                                         </div>
                                                         <div className="full-width">
@@ -265,7 +143,7 @@ export const Checkout = () => {
                                                     </div>
                                                     <div className='group-fields two-fields'>
                                                         <div className="inputs">
-                                                            <input type="text" placeholder='City' onChange={(e) => validateCity(e.target.value)} id='billingcity' />
+                                                            <input type="text" placeholder='City' onChange={(e) => validateName(e.target.value, 'billingcity', 'City/Town')} id='billingcity' />
                                                             <div className="error_1"></div>
                                                         </div>
                                                         <select name="" id="">
@@ -279,11 +157,11 @@ export const Checkout = () => {
                                                     </div>
                                                     <div className='group-fields two-fields'>
                                                         <div className="inputs">
-                                                            <input type="text" placeholder='Postcode' id='billingpostcode' onChange={(e) => validatePostCode(e.target.value)} />
+                                                            <input type="text" placeholder='Postcode' id='billingpostcode' onChange={(e) => validatePostCode(e.target.value, 'billingpostcode', 'Zip Code')} />
                                                             <div className="error_1"></div>
                                                         </div>
                                                         <div className="inputs">
-                                                            <select name="" id="billingselectCity" onChange={(e) => validateSelectCity(e.target.value)}>
+                                                            <select name="" id="billingselectCity" onChange={(e) => validateAddress(e.target.value, 'billingselectCity', 'City')}>
                                                                 <option value="">Select Country</option>
                                                                 <option value="Chandigarh">Chandigarh</option>
                                                                 <option value="Delhi">Delhi</option>
@@ -296,7 +174,7 @@ export const Checkout = () => {
                                                     </div>
                                                     <div className='group-fields'>
                                                         <div className="inputs">
-                                                            <input type="tel" placeholder='Telephone' id='billingtelephone' maxLength={10} onChange={(e) => validateTelephone(e.target.value)} />
+                                                            <input type="tel" placeholder='Telephone' id='billingtelephone' maxLength={10} onChange={(e) => validateTelephone(e.target.value, 'billingtelephone', 'Telephone Number')} />
                                                             <div className="error_1"></div>
                                                         </div>
                                                     </div>
@@ -309,11 +187,11 @@ export const Checkout = () => {
 
                                         <div className="group-fields two-fields">
                                             <div className="inputs">
-                                                <input type="password" placeholder='Password' id='pass' onChange={(e) => validatePass(e.target.value)} maxLength={8} />
+                                                <input type="password" placeholder='Password' id='pass' onChange={(e) => validatePass(e.target.value, 'pass', 'Password')} maxLength={8} />
                                                 <div className="error_1"></div>
                                             </div>
                                             <div className="inputs">
-                                                <input type="password" placeholder='Confirm Password' id='cpass' maxLength={8} onChange={(e) => validateCpass(e.target.value)} />
+                                                <input type="password" placeholder='Confirm Password' id='cpass' maxLength={8} onChange={(e) => validateCpass(e.target.value, 'cpass', 'Password')} />
                                                 <div className="error_1"></div>
                                             </div>
                                         </div>
@@ -354,6 +232,7 @@ export const Checkout = () => {
                             : <Pickup />}
                     </div>
                 </div>
+                <Footer/>
             </div>
         </>
     )

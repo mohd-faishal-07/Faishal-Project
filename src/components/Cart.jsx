@@ -13,10 +13,10 @@ export const Cart = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        const storedCounts = JSON.parse(localStorage.getItem('cartCounts')) || {};
-        setCounts(storedCounts);
-    }, []);
+    // useEffect(() => {
+    //     const storedCounts = JSON.parse(localStorage.getItem('cartCounts')) || {};
+    //     setCounts(storedCounts);
+    // }, []);
 
 
     const cartData = useSelector((state) => state.cartData)
@@ -57,7 +57,6 @@ export const Cart = () => {
                 [id]: updatedCount,
             };
             dispatch(updateCartCount(updatedCounts));
-            localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
             return updatedCounts;
 
         });
@@ -71,7 +70,6 @@ export const Cart = () => {
                     [id]: prevCounts[id] - 1,
                 };
                 dispatch(updateCartCount(updatedCounts));
-                localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
                 return updatedCounts;
             } else {
                 dispatch(removeToCart(item));
@@ -79,7 +77,6 @@ export const Cart = () => {
 
                 const updatedCounts = { ...prevCounts };
                 delete updatedCounts[id];
-                localStorage.setItem('cartCounts', JSON.stringify(updatedCounts));
                 return updatedCounts;
             }
         });

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
-export const ShopByCategory = () => {
+export const ShopByCategory = ({ filter, filterMen}) => {
 
-    const [filter, setFilter] = useState(null)
+    // const [filter, setFilter] = useState(null)
 
-    function filterMen(value) {
-        setFilter((prevFilter) => (prevFilter === value ? null : value));
-    }
+    // function filterMen(value) {
+    //     setFilter((prevFilter) => (prevFilter === value ? null : value));
+    // }
 
     return (
         <>

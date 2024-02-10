@@ -10,10 +10,12 @@ export default function Navbar() {
     // const storedCounts = JSON.parse(localStorage.getItem('cartCounts')) || {};
     // const totalCartCount = Object.values(storedCounts).reduce((acc, count) => acc + count, 0);
     // const result = useSelector((state)=>state.cartData)
-    // console.log("data",result);
+    // console.log("data",result)
 
     const cartCounts = useSelector((state) => state.increment.cartCounts || {});
-    const totalCartCount = Object.values(cartCounts).reduce((acc, count) => acc + count, 0);
+    const cart = useSelector((state) => state.cartData || []);
+    console.log(cart);
+    const totalCartCount = cart.map((item)=>item.qty).reduce((acc, count) => acc + count, 0);
   
 
     return (

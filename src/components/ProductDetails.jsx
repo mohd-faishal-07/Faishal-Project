@@ -10,7 +10,7 @@ export const ProductDetails = () => {
   const [data, setData] = useState([])
   const [disabled, setDisabled] = useState(false);
   const cartData = useSelector((state) => state.cartData);
-  const counts = useSelector((state) => state.increment.cartCounts);
+  const counts = useSelector((state) => state.cartData);
 
   const dispatch = useDispatch()
   console.log(data);

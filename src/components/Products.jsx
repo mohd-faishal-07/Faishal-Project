@@ -74,15 +74,18 @@ export const Products = () => {
               >
                 <ShopByCategory filter={filter} filterMen={filterMen} />
               </div>
-              <div
-                className={toggle == 2 ? "active" : "filters shop-by-color"}
-              >
-                <ShopByColor color={color} filterByColor={filterByColor}/>
+              <div className={toggle == 2 ? "active" : "filters shop-by-color"}>
+                <ShopByColor color={color} filterByColor={filterByColor} />
               </div>
               <div className={toggle == 3 ? "active" : "filters shop-by-price"}>
-                <ShopByPrice value={value} setValue={setValue} min={min} max={max}/>
+                <ShopByPrice
+                  value={value}
+                  setValue={setValue}
+                  min={min}
+                  max={max}
+                />
               </div>
-            </div>
+            </div>{" "}
             <div className="products">
               {datas.length > 0 ? (
                 datas.map(

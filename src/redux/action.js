@@ -4,7 +4,8 @@ export const addToCart = (data) => {
     console.warn("action is called", data)
     return {
         type: ADD_TO_CART,
-        data
+        data: data, 
+        payload: data
     }
 }
 
@@ -12,20 +13,21 @@ export const removeToCart = (data) => {
     console.warn("action removeToCart", data)
     return {
         type: REMOVE_FROM_CART,
-        data
+        data: data,
+        payload: data
     }
 }
 
-export const updateCartCount = (counts) => {
+export const updateCartCount = (payload) => {
     return {
         type: UPDATE_CART_COUNT,
-        payload: counts,
+        payload: payload,
     };
 };
 
-export const removeCartCount = (itemId) => {
+export const removeCartCount = (payload) => {
     return {
       type: REMOVE_CART_COUNT,
-      itemId,
+      payload: payload
     };
 };

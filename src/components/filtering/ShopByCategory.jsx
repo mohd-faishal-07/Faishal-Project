@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom';
 
 export const ShopByCategory = ({ filter, filterMen}) => {
 
-    // const [filter, setFilter] = useState(null)
-
-    // function filterMen(value) {
-    //     setFilter((prevFilter) => (prevFilter === value ? null : value));
-    // }
-
     return (
         <>
             <div className='shop-category'>

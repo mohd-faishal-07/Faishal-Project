@@ -12,7 +12,7 @@ export default function Navbar() {
     // const result = useSelector((state)=>state.cartData)
     // console.log("data",result)
 
-    const cartCounts = useSelector((state) => state.increment.cartCounts || {});
+    
     const cart = useSelector((state) => state.cartData || []);
     console.log(cart);
     const totalCartCount = cart.map((item)=>item.qty).reduce((acc, count) => acc + count, 0);
